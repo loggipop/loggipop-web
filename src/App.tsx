@@ -1,37 +1,189 @@
+import { InstallTabs } from "@/components/InstallTabs";
+import { CodeBlock } from "@/components/CodeBlock";
+import { FeatureCard } from "@/components/FeatureCard";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { APITester } from "./APITester";
+import { Shield, GitBranch, Zap, Terminal, Lock, RefreshCw } from "lucide-react";
 import "./index.css";
-
-import logo from "./logo.svg";
-import reactLogo from "./react.svg";
 
 export function App() {
   return (
-    <div className="container mx-auto p-8 text-center relative z-10">
-      <div className="flex justify-center items-center gap-8 mb-8">
-        <img
-          src={logo}
-          alt="Bun Logo"
-          className="h-36 p-6 transition-all duration-300 hover:drop-shadow-[0_0_2em_#646cffaa] scale-120"
-        />
-        <img
-          src={reactLogo}
-          alt="React Logo"
-          className="h-36 p-6 transition-all duration-300 hover:drop-shadow-[0_0_2em_#61dafbaa] [animation:spin_20s_linear_infinite]"
-        />
-      </div>
-
-      <Card className="bg-card/50 backdrop-blur-sm border-muted">
-        <CardContent className="pt-6">
-          <h1 className="text-5xl font-bold my-4 leading-tight">Bun + React</h1>
-          <p>
-            Edit{" "}
-            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">src/App.tsx</code> and
-            save to test HMR
+    <div className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <section className="container mx-auto px-4 py-20 text-center">
+        <div className="max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-3 text-lollipop text-xl mb-8">
+            <span className="text-3xl">🍭</span>
+            <span className="font-bold tracking-wide">Loggipop</span>
+          </div>
+          
+          <h1 className="text-7xl font-black mb-6 leading-tight">
+            <span className="bg-gradient-hero bg-clip-text text-transparent">Never lose</span>
+            <br />
+            <span className="text-foreground">your secrets</span>
+            <span className="text-lollipop">.</span>
+          </h1>
+          
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Secure environment variables in your system keychain. One CLI command to store, retrieve, and run with secrets.
           </p>
-          <APITester />
-        </CardContent>
-      </Card>
+          
+          <div className="mb-12">
+            <InstallTabs />
+          </div>
+          
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow">
+              <Terminal className="mr-2 h-5 w-5" />
+              Get Started
+            </Button>
+            <Button variant="outline" size="lg" className="border-border hover:bg-secondary">
+              View on GitHub
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Start Section */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Quick Start</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="bg-card border-border">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-4 text-foreground flex items-center gap-2">
+                  <span className="text-lollipop">1️⃣</span>
+                  Store your secrets
+                </h3>
+                <CodeBlock 
+                  code={`# From a .env file
+lpop .env.local
+
+# Or add a single variable
+lpop API_KEY=secret123`}
+                />
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-card border-border">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-4 text-foreground flex items-center gap-2">
+                  <span className="text-lollipop">2️⃣</span>
+                  Retrieve anywhere
+                </h3>
+                <CodeBlock 
+                  code={`# Get all variables 
+lpop
+
+# Use with different environments
+lpop --env production`}
+                />
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-card border-border md:col-span-2">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold mb-4 text-foreground flex items-center gap-2">
+                  <span className="text-lollipop">3️⃣</span>
+                  Skip .env files entirely
+                </h3>
+                <CodeBlock 
+                  code={`# Run commands with keychain variables loaded
+lpop env -- npm start
+lpop env -- bun dev
+lpop env --env production -- npm run build`}
+                />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Why lpop?</h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <FeatureCard
+              icon={<Shield className="h-8 w-8" />}
+              title="Secure by Design"
+              description="Uses your system's native keychain for maximum security. No plaintext secrets in your repos."
+            />
+            
+            <FeatureCard
+              icon={<GitBranch className="h-8 w-8" />}
+              title="Git-aware"
+              description="Automatically organizes variables by repository and environment. Perfect for multiple projects."
+            />
+            
+            <FeatureCard
+              icon={<Zap className="h-8 w-8" />}
+              title="Lightning Fast"
+              description="Instant access to your environment variables. No database, no network calls, just your keychain."
+            />
+            
+            <FeatureCard
+              icon={<Lock className="h-8 w-8" />}
+              title="Never Lose Secrets"
+              description="Clone repos anywhere and restore your secrets instantly. Perfect for AI coding tools."
+            />
+            
+            <FeatureCard
+              icon={<RefreshCw className="h-8 w-8" />}
+              title="Environment Support"
+              description="Separate variables for development, staging, and production environments."
+            />
+            
+            <FeatureCard
+              icon={<Terminal className="h-8 w-8" />}
+              title="Zero Config"
+              description="Works out of the box. Just install and start storing your secrets securely."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* How it Works Section */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">How It Works</h2>
+          
+          <Card className="bg-card border-border">
+            <CardContent className="p-6">
+              <p className="text-muted-foreground mb-6 text-center">
+                lpop automatically detects your git repository and organizes variables by project and environment:
+              </p>
+              
+              <CodeBlock 
+                code={`🔐 System Keychain
+├── 📁 lpop://user/project
+│   ├── 🔑 API_KEY - repo level api key
+│   └── 🔑 SECRET_TOKEN - repo level token
+├── 📁 lpop://user/project?env=development
+│   └── 🔑 DATABASE_URL - development database
+└── 📁 lpop://user/project?env=production
+    └── 🔑 DATABASE_URL - production database`}
+                showCopy={false}
+              />
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border bg-card">
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center text-muted-foreground">
+            <p className="flex items-center justify-center gap-2 mb-4">
+              <span className="text-lollipop text-xl">🍭</span>
+              <span className="font-bold">Loggipop</span>
+            </p>
+            <p>Secure environment variable management for developers</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
