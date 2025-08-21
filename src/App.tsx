@@ -20,7 +20,11 @@ export function App() {
   };
 
   const openGitHub = () => {
-    window.open("https://github.com/loggipop/loggipop", "_blank");
+    window.open("https://github.com/loggipop/lpop", "_blank");
+  };
+
+  const openNpm = () => {
+    window.open("https://www.npmjs.com/package/@loggipop/lpop", "_blank");
   };
 
   return (
@@ -70,6 +74,14 @@ export function App() {
               onClick={openGitHub}
             >
               View on GitHub
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-border hover:bg-muted hover:text-foreground hover:border-border w-full sm:w-auto"
+              onClick={openNpm}
+            >
+              View on npm
             </Button>
           </div>
         </div>
