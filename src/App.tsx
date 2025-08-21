@@ -14,6 +14,15 @@ import {
 import "./index.css";
 
 export function App() {
+  const scrollToQuickStart = () => {
+    const element = document.getElementById('quick-start');
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const openGitHub = () => {
+    window.open('https://github.com/loggipop/loggipop', '_blank');
+  };
+
   return (
     <div
       className="min-h-screen"
@@ -49,6 +58,7 @@ export function App() {
             <Button
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
+              onClick={scrollToQuickStart}
             >
               <Terminal className="mr-2 h-5 w-5" />
               Get Started
@@ -57,6 +67,7 @@ export function App() {
               variant="outline"
               size="lg"
               className="border-border hover:bg-muted hover:text-foreground hover:border-border"
+              onClick={openGitHub}
             >
               View on GitHub
             </Button>
@@ -65,7 +76,7 @@ export function App() {
       </section>
 
       {/* Quick Start Section */}
-      <section className="container mx-auto px-4 py-16">
+      <section id="quick-start" className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
             Quick Start
