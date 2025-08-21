@@ -3,12 +3,22 @@ import { CodeBlock } from "@/components/CodeBlock";
 import { FeatureCard } from "@/components/FeatureCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Shield, GitBranch, Zap, Terminal, Lock, RefreshCw } from "lucide-react";
+import {
+  Shield,
+  GitBranch,
+  Zap,
+  Terminal,
+  Lock,
+  RefreshCw,
+} from "lucide-react";
 import "./index.css";
 
 export function App() {
   return (
-    <div className="min-h-screen bg-background">
+    <div
+      className="min-h-screen"
+      style={{ backgroundColor: "hsl(var(--background))" }}
+    >
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 text-center">
         <div className="max-w-4xl mx-auto">
@@ -16,28 +26,38 @@ export function App() {
             <span className="text-3xl">🍭</span>
             <span className="font-bold tracking-wide">Loggipop</span>
           </div>
-          
+
           <h1 className="text-7xl font-black mb-6 leading-tight">
-            <span className="bg-gradient-hero bg-clip-text text-transparent">Never lose</span>
+            <span className="gradient-hero bg-clip-text text-transparent">
+              Never lose
+            </span>
             <br />
             <span className="text-foreground">your secrets</span>
             <span className="text-lollipop">.</span>
           </h1>
-          
+
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Secure environment variables in your system keychain. One CLI command to store, retrieve, and run with secrets.
+            Secure environment variables in your system keychain. One CLI
+            command to store, retrieve, and run with secrets.
           </p>
-          
-          <div className="mb-12">
+
+          <div className="mb-12 flex justify-center">
             <InstallTabs />
           </div>
-          
+
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow">
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow"
+            >
               <Terminal className="mr-2 h-5 w-5" />
               Get Started
             </Button>
-            <Button variant="outline" size="lg" className="border-border hover:bg-secondary">
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-border hover:bg-muted hover:text-foreground hover:border-border"
+            >
               View on GitHub
             </Button>
           </div>
@@ -47,8 +67,10 @@ export function App() {
       {/* Quick Start Section */}
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Quick Start</h2>
-          
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
+            Quick Start
+          </h2>
+
           <div className="grid md:grid-cols-2 gap-8">
             <Card className="bg-card border-border">
               <CardContent className="p-6">
@@ -56,7 +78,7 @@ export function App() {
                   <span className="text-lollipop">1️⃣</span>
                   Store your secrets
                 </h3>
-                <CodeBlock 
+                <CodeBlock
                   code={`# From a .env file
 lpop .env.local
 
@@ -65,14 +87,14 @@ lpop API_KEY=secret123`}
                 />
               </CardContent>
             </Card>
-            
+
             <Card className="bg-card border-border">
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-4 text-foreground flex items-center gap-2">
                   <span className="text-lollipop">2️⃣</span>
                   Retrieve anywhere
                 </h3>
-                <CodeBlock 
+                <CodeBlock
                   code={`# Get all variables 
 lpop
 
@@ -81,14 +103,14 @@ lpop --env production`}
                 />
               </CardContent>
             </Card>
-            
+
             <Card className="bg-card border-border md:col-span-2">
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-4 text-foreground flex items-center gap-2">
                   <span className="text-lollipop">3️⃣</span>
                   Skip .env files entirely
                 </h3>
-                <CodeBlock 
+                <CodeBlock
                   code={`# Run commands with keychain variables loaded
 lpop env -- npm start
 lpop env -- bun dev
@@ -103,39 +125,41 @@ lpop env --env production -- npm run build`}
       {/* Features Section */}
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Why lpop?</h2>
-          
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
+            Why lpop?
+          </h2>
+
           <div className="grid md:grid-cols-3 gap-8">
             <FeatureCard
               icon={<Shield className="h-8 w-8" />}
               title="Secure by Design"
               description="Uses your system's native keychain for maximum security. No plaintext secrets in your repos."
             />
-            
+
             <FeatureCard
               icon={<GitBranch className="h-8 w-8" />}
               title="Git-aware"
               description="Automatically organizes variables by repository and environment. Perfect for multiple projects."
             />
-            
+
             <FeatureCard
               icon={<Zap className="h-8 w-8" />}
               title="Lightning Fast"
               description="Instant access to your environment variables. No database, no network calls, just your keychain."
             />
-            
+
             <FeatureCard
               icon={<Lock className="h-8 w-8" />}
               title="Never Lose Secrets"
               description="Clone repos anywhere and restore your secrets instantly. Perfect for AI coding tools."
             />
-            
+
             <FeatureCard
               icon={<RefreshCw className="h-8 w-8" />}
               title="Environment Support"
               description="Separate variables for development, staging, and production environments."
             />
-            
+
             <FeatureCard
               icon={<Terminal className="h-8 w-8" />}
               title="Zero Config"
@@ -148,15 +172,18 @@ lpop env --env production -- npm run build`}
       {/* How it Works Section */}
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">How It Works</h2>
-          
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
+            How It Works
+          </h2>
+
           <Card className="bg-card border-border">
             <CardContent className="p-6">
               <p className="text-muted-foreground mb-6 text-center">
-                lpop automatically detects your git repository and organizes variables by project and environment:
+                lpop automatically detects your git repository and organizes
+                variables by project and environment:
               </p>
-              
-              <CodeBlock 
+
+              <CodeBlock
                 code={`🔐 System Keychain
 ├── 📁 lpop://user/project
 │   ├── 🔑 API_KEY - repo level api key
