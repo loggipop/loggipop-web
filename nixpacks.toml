@@ -7,5 +7,5 @@ nixPkgs = ['bun']
 [phases.build]
 cmds = ['bun install --frozen-lockfile', 'bun run build']
 
-[start]
-cmd = 'bun run start'
+[staticAssets]
+dir = 'dist'
