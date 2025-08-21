@@ -10,7 +10,12 @@ interface CodeBlockProps {
   showCopy?: boolean;
 }
 
-export const CodeBlock = ({ code, language = "bash", className = "", showCopy = true }: CodeBlockProps) => {
+export const CodeBlock = ({
+  code,
+  language = "bash",
+  className = "",
+  showCopy = true,
+}: CodeBlockProps) => {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = async () => {
@@ -26,15 +31,23 @@ export const CodeBlock = ({ code, language = "bash", className = "", showCopy = 
 
   return (
     <div className={`relative group ${className}`}>
-      <pre className="bg-gradient-code border border-border rounded-lg p-3 sm:p-4 overflow-x-auto">
-        <code className="text-foreground font-mono text-xs sm:text-sm leading-relaxed">{code}</code>
+      <pre
+        className="bg-gradient-code border border-border rounded-lg p-3 sm:p-4 overflow-x-auto cursor-pointer hover:bg-opacity-80 transition-colors"
+        onClick={copyToClipboard}
+      >
+        <code className="text-foreground font-mono text-xs sm:text-sm leading-relaxed">
+          {code}
+        </code>
       </pre>
       {showCopy && (
         <Button
           variant="ghost"
           size="sm"
-          onClick={copyToClipboard}
-          className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
+          onClick={(e) => {
+            e.stopPropagation();
+            copyToClipboard();
+          }}
+          className="absolute top-1/2 -translate-y-1/2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
         >
           {copied ? (
             <Check className="h-4 w-4 text-terminal" />

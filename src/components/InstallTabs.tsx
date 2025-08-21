@@ -3,7 +3,9 @@ import { CodeBlock } from "./CodeBlock";
 
 export const InstallTabs = () => {
   return (
-    <Tabs defaultValue="bun" className="w-full max-w-2xl">
+    <Tabs defaultValue="npm" className="w-full max-w-2xl">
+      {/* TODO: Add bun and pnpm tabs */}
+      {/*       
       <TabsList className="grid w-full grid-cols-3 bg-card border border-border h-auto p-1">
         <TabsTrigger
           value="bun"
@@ -23,7 +25,7 @@ export const InstallTabs = () => {
         >
           pnpm
         </TabsTrigger>
-      </TabsList>
+      </TabsList> */}
       <TabsContent value="bun" className="mt-4">
         <CodeBlock code="bun add -g @loggipop/lpop" />
       </TabsContent>
